@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>basic :: License jQuery</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic">
+<style>
+body {
+	margin: 20px;
+	padding: 20px;
+	line-height: 1;
+	font-family: "Open Sans", sans-serif;
+	font-size: 1em;
+	background-color: #f1f1f1;
+	color: #555;
+}
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+.title {
+	margin: 0;
+	padding: 0;
+	font-size: 1.5em;
+	font-weight: 300;
+	color: #555;
+}
+.container {
+	margin-top: 35px;
+}
+.keyvisual_area {
+	position: relative;
+	width: 900px;
+	height: 474px;
+	overflow: hidden;
+}
+.keyvisual_area .arrow {
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	z-index: 100;
+	margin-top: -40px;
+}
+.keyvisual_area .arrow a.left {
+	float: left;
+	margin-left: 20px;
+}
+.keyvisual_area .arrow a.right {
+	float: right;
+	margin-right: 20px;
+}
+.keyvisual_area .visual_area ul {
+	width: 100%;
+}
+.keyvisual_area .visual_area li {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 900px;
+}
+.keyvisual_area .visual_area li .text {
+	position: absolute;
+	left: 0;
+	top: 0;z-index: 5;
+	height: 420px;
+	opacity: 0;
+	transform: translateX(-200px);
+	transition: all 1s; 
+	transition-delay: 0.3s;
+}
+.keyvisual_area .visual_area li .visual {
+	position: absolute;
+	right: 0;
+	top: 0;
+	max-width: 100%;
+	opacity: 0;
+	transform: translateX(200px);
+	transition: all 1s;
+}
+.keyvisual_area .visual_area li.active .text,
+.keyvisual_area .visual_area li.active .visual {
+	opacity: 1;
+	transform: translateX(0);
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(function(){
+	var n =0;
+
+    setTimeout(function(){
+        $(".visual_area li").eq(0).addClass("active");
+    }, 150);
+
+    setInterval(function(){
+        $(".right").trigger("click");
+    }, 6000);
+
+    $(".right").click(function(e){
+        e.preventDefault();
+
+        if(n<3){
+            n++;
+        }
+
+        else{
+            n=0;
+        }
+
+        $(".visual_area li").removeClass("active");
+        $(".visual_area li").eq(n).addClass("active");
+    });
+
+    $(".left").click(function(e){
+        e.preventDefault();
+
+        if(n>0){
+            n--;
+        }
+
+        else{
+            n=3;
+        }
+
+        $(".visual_area li").removeClass("active");
+        $(".visual_area li").eq(n).addClass("active");
+    });
+});
+</script>
+</head>
+
+<body>
+<h1 class="title">basic :: License jQuery</h1>
+<div class="container">
+	<div class="keyvisual_area">
+		<div class="arrow">
+			<a href="#" class="left"><img src="images/main_visual_left.png" alt="left"></a>
+			<a href="#" class="right"><img src="images/main_visual_right.png" alt="right"></a>
+		</div>
+		<div class="visual_area">
+			<ul>
+				<li>
+					<img src="images/text1.png" alt="text1" class="text">
+					<img src="images/visual1.jpg" alt="visual1" class="visual">
+				</li>
+				<li>
+					<img src="images/text2.png" alt="text2" class="text">
+					<img src="images/visual2.jpg" alt="visual2" class="visual">
+				</li>
+				<li>
+					<img src="images/text3.png" alt="text3" class="text">
+					<img src="images/visual3.jpg" alt="visual3" class="visual">
+				</li>
+				<li>
+					<img src="images/text4.png" alt="text4" class="text">
+					<img src="images/visual4.jpg" alt="visual4" class="visual">
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+</body>
+</html>
