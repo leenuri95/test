@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9448297042.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>습작포폴(vogue)</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Roboto Condensed', sans-serif;
+    }
+
+    body {
+        width: 100%;
+    }
+
+    #wrapper {
+        width: 100%;
+        margin: auto;
+    }
+
+    header {
+        position: relative;
+        width: 100%;
+        height: 220px;
+        border: 1px solid #eaeaea;
+        box-shadow: 0px 0px 5px gray;
+    }
+
+    #head_box1 {
+        /* border: 1px solid red; */
+        display: inline-block;
+        margin-left: 20px;
+        position: absolute;
+        top: 15px;
+        left: 200px;
+    }
+
+    #head_box1>a {
+        color: #000;
+        font-size: 18px;
+        font-weight: 400;
+        margin-left: 20px;
+    }
+
+    #head_box2 {
+        /* border: 1px solid red; */
+        display: inline-block;
+        position: absolute;
+        right: 200px;
+    }
+
+    #head_box2>ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+    }
+
+    #head_box2>ul>li {
+        float: left;
+        width: 130px;
+        height: 50px;
+        /* border-right: 1px solid gray; */
+        text-align: center;
+        line-height: 50px;
+        font-size: 15px;
+        color: gray;
+        font-weight: 100;
+
+    }
+
+    #border>ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        border: 1px solid gray;
+        width: 162px;
+        height: 92px;
+        display: none;
+        position: absolute;
+        top: 49px;
+    }
+
+    #border>ul>li {
+        text-align: left;
+        width: 160px;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    #border>ul>li:hover {
+        background: #eaeaea;
+    }
+
+    #border>ul>li>a {
+        display: block;
+        text-decoration: none;
+        color: gray;
+        font-size: 13px;
+    }
+
+    #head_box2>ul>li>ul.head_li {
+        display: block;
+    }
+
+    #border {
+        border-right: 1px solid gray;
+    }
+
+    #head_box3 {
+        margin: auto;
+        width: 80%;
+        height: 100px;
+        height: auto;
+        /* border: 1px solid red; */
+    }
+
+    #head_box3>a {
+        background: url(./img/header1.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+        width: 500px;
+        height: 100px;
+        position: absolute;
+        top: 45px;
+        left: 50%;
+        margin: auto;
+        /* border: 1px solid blue; */
+        transform: translateX(-50%);
+    }
+
+    #head_box4 {
+        /* border: 1px solid red; */
+        display: inline-block;
+        position: absolute;
+        top: 175px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 800px;
+        margin-left: 100px;
+    }
+
+    #head_box4>ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    #head_box4>ul>li {
+        float: left;
+        margin-left: 40px;
+    }
+
+    #head_box4>ul>li>a {
+        text-decoration: none;
+        font-weight: 700;
+        color: #000;
+        font-size: 16px;
+    }
+
+    #head_box4>ul>li>a:hover {
+        color: red;
+    }
+
+    /* .fa-search {
+        color: #000;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        margin-left: 40px;
+        margin-top: -10px;
+    }
+
+    #box4_input {
+        float: left;
+        margin-left: 10px;
+        position:relative;
+    }
+
+    #box4_input>input {
+        width: 148px;
+        height: 30px;
+        border: 1px solid red;
+        border-radius: 5px;
+        display: none;
+    }
+
+    input:focus {
+        outline: 3px solid #000;
+    } */
+
+    #box4_input {
+        width: 250px;
+        height: 40px;
+        background: #000;
+        position: absolute;
+        right: 189px;
+        top: -11px;
+        float: right;
+        display: none;
+    }
+
+    #box4_input.eff {
+        display: block;
+    }
+
+    #text>input {
+        width: 210px;
+        height: 30px;
+        position: absolute;
+        top: 5px;
+        left: 4px;
+        font-size: 16px;
+    }
+
+    #box4_button {
+        width: 30px;
+        height: 30px;
+        background: #000;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        text-align: center;
+        line-height: 30px;
+        transition: 0.5s;
+    }
+
+    #box4_button:hover {
+        background: red;
+    }
+
+    #search1 {
+        color: #000;
+    }
+
+    #search2 {
+        color: #fff;
+    }
+
+    section {
+        width: 1300px;
+        margin: auto;
+    }
+
+    #section_box1 {
+        width: 1300px;
+        height: 720px;
+        background: url(./img/sec1.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center 80%;
+        transition: 0.5s;
+        box-sizing: border-box;
+        position: relative;
+
+    }
+
+    #section_box1>p {
+        position: absolute;
+        top: 590px;
+        left: 550px;
+        color: #fff;
+        font-size: 2.5em;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    #section_box1>div {
+        width: 1300px;
+        height: 720px;
+        border: 0px solid red;
+        position: absolute;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+
+    #section_box1>div:hover {
+        border: 20px solid red;
+    }
+
+    #section_box2 {
+        width: 1300px;
+    }
+
+    #box2_img1>p {
+        position: absolute;
+        top: 495px;
+        left: 90px;
+        color: #fff;
+        font-size: 1.8em;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    #box2_img2>p {
+        position: absolute;
+        top: 510px;
+        left: 95px;
+        color: #fff;
+        font-size: 2em;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    #box2_img3>p {
+        position: absolute;
+        top: 500px;
+        left: 90px;
+        color: #fff;
+        font-size: 1.8em;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    #box2_img1,
+    #box2_img2,
+    #box2_img3 {
+        width: 433px;
+        height: 600px;
+        /* border: 1px solid red; */
+        float: left;
+    }
+
+    #box2_img1 {
+        background: url(./img/sec2.jpg);
+    }
+
+    #box2_img2 {
+        background: url(./img/sec3.jpg);
+    }
+
+    #box2_img3 {
+        background: url(./img/sec4.jpg);
+    }
+
+    #box2_img1,
+    #box2_img2,
+    #box2_img3 {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center -1%;
+        transition: 0.5s;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    #box2_img1>div,
+    #box2_img2>div,
+    #box2_img3>div {
+        width: 433px;
+        height: 600px;
+        border: 0px solid red;
+        position: absolute;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+
+    #box2_img1>div:hover,
+    #box2_img2>div:hover,
+    #box2_img3>div:hover {
+        border: 20px solid red;
+    }
+
+    #section_box3 {
+        width: 1300px;
+        height: 720px;
+        background: url(./img/sec5.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        transition: 0.5s;
+        box-sizing: border-box;
+        position: relative;
+        clear: both;
+    }
+
+    #section_box3>div {
+        width: 1300px;
+        height: 720px;
+        border: 0px solid red;
+        position: absolute;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+
+    #section_box3>p {
+        position: absolute;
+        top: 650px;
+        left: 430px;
+        color: #fff;
+        font-size: 2em;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    #section_box3>div:hover {
+        border: 20px solid red;
+    }
+
+    #section_box4 {
+        width: 1300px;
+    }
+
+    #box4_img1,
+    #box4_img2,
+    #box4_img3 {
+        width: 433px;
+        height: 600px;
+        /* border: 1px solid red; */
+        float: left;
+    }
+
+    #box4_img1 {
+        background: url(./img/sec6.jpg);
+    }
+
+    #box4_img2 {
+        background: url(./img/sec7.jpg);
+    }
+
+    #box4_img3 {
+        background: url(./img/sec8.jpg);
+    }
+
+    #box4_img1,
+    #box4_img2,
+    #box4_img3 {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center -1%;
+        transition: 0.5s;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    #box4_img1>div,
+    #box4_img2>div,
+    #box4_img3>div {
+        width: 433px;
+        height: 600px;
+        border: 0px solid red;
+        position: absolute;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+
+    #box4_img1>div:hover,
+    #box4_img2>div:hover,
+    #box4_img3>div:hover {
+        border: 20px solid red;
+    }
+
+    #box4_img1>p {
+        position: absolute;
+        top: 520px;
+        left: 80px;
+        color: #fff;
+        font-size: 1.6em;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    #box4_img2>p {
+        position: absolute;
+        top: 500px;
+        left: 80px;
+        color: #fff;
+        font-size: 1.6em;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    #box4_img3>p {
+        position: absolute;
+        top: 470px;
+        left: 80px;
+        color: #fff;
+        font-size: 1.6em;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    #section_box5 {
+        width: 1300px;
+        height: 720px;
+        background: url(./img/sec9.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center -0%;
+        transition: 0.5s;
+        box-sizing: border-box;
+        position: relative;
+        clear: both;
+    }
+
+    #section_box5>div {
+        width: 1300px;
+        height: 720px;
+        border: 0px solid red;
+        position: absolute;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+
+    #section_box5>div:hover {
+        border: 20px solid red;
+    }
+
+    #section_box5>p {
+        position: absolute;
+        top: 640px;
+        left: 490px;
+        color: #fff;
+        font-size: 2em;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    #section_box4 {
+        width: 1300px;
+    }
+
+    #box6_img1,
+    #box6_img2,
+    #box6_img3 {
+        width: 433px;
+        height: 600px;
+        /* border: 1px solid red; */
+        float: left;
+    }
+
+    #box6_img1 {
+        background: url(./img/sec10.jpg);
+    }
+
+    #box6_img2 {
+        background: url(./img/sec11.jpg);
+    }
+
+    #box6_img3 {
+        background: url(./img/sec12.jpg);
+    }
+
+    #box6_img1,
+    #box6_img2,
+    #box6_img3 {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center -1%;
+        transition: 0.5s;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    #box6_img1>div,
+    #box6_img2>div,
+    #box6_img3>div {
+        width: 433px;
+        height: 600px;
+        border: 0px solid red;
+        position: absolute;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+
+    #box6_img1>div:hover,
+    #box6_img2>div:hover,
+    #box6_img3>div:hover {
+        border: 20px solid red;
+    }
+
+    #box6_img1>p {
+        position: absolute;
+        top: 495px;
+        left: 60px;
+        color: #fff;
+        font-size: 1.8em;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    #box6_img2>p {
+        position: absolute;
+        top: 500px;
+        left: 100px;
+        color: #fff;
+        font-size: 1.8em;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    #box6_img3>p {
+        position: absolute;
+        top: 530px;
+        left: 70px;
+        color: #fff;
+        font-size: 1.8em;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    footer {
+        width: 1300px;
+        height: 300px;
+        background: #000;
+        position: relative;
+        margin: auto;
+        clear: both;
+    }
+
+    #footer_box1 {
+        /* border: 1px solid #fff; */
+        display: inline-block;
+        position: absolute;
+        top: 80px;
+        left: 480px;
+    }
+
+    #footer_box2>p {
+        color: gray;
+        font-size: 11px;
+        font-weight: 100;
+        position: absolute;
+        top: 180px;
+        left: 350px;
+    }
+
+    #footer_box3 {
+        /* border: 1px solid #fff; */
+        display: inline-block;
+        position: absolute;
+        top: 210px;
+        left: 480px;
+    }
+
+    #footer_box3>ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    #footer_box3>ul>li {
+        float: left;
+        margin-left: 20px;
+    }
+
+    #footer_box3>ul>li>a {
+        text-decoration: none;
+        color: gray;
+        font-size: 13px;
+    }
+</style>
+<script>
+    $(function () {
+        $("#border, #border>ul>li, #border>ul>li>a ").mouseover(function () {
+            $("#border > ul").addClass("head_li");
+        });
+        $("#border").mouseout(function () {
+            $("#head_box2 > ul > li > ul").removeClass("head_li");
+        });
+
+        $("#search1").mouseover(function () {
+            $("#search1").css({ "color": "red" });
+        });
+        $("#search1").mouseout(function () {
+            $("#search1").css({ "color": "#000" });
+        });
+
+        $("#search1").on("click onfocus", function () {
+            $("#box4_input")
+                .css({ "display": "block" });
+            $("#box4_input input")
+                .focus();
+        });
+        $("#box4_input").on("focusout", function () {
+            $("#box4_input").css({ "display": "none" });
+        });
+
+
+        // $('html').click(function (e) {
+        //     if (!$(e.target).hasClass("lee")) {
+        //         $("#box4_input").css({ "display": "none" });
+
+        //     }
+        // });
+    });
+</script>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="head_box1">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+
+            </div>
+
+            <div id="head_box2">
+                <ul>
+                    <li id="border">SIDE MENU
+                        <ul>
+                            <li><a href="#">회사소개</a></li>
+                            <li><a href="#">광고 및 제휴</a></li>
+                            <li><a href="#">개인정보 처리방침</a></li>
+                        </ul>
+                    </li>
+                    <li>SUBSCRIBE</li>
+                </ul>
+            </div>
+
+            <div id="head_box3"><a href="#"></a></div>
+
+            <div id="head_box4">
+                <ul>
+                    <li><a href="#">FASHION</a></li>
+                    <li><a href="#">BEAUTY</a></li>
+                    <li><a href="#">LIVING</a></li>
+                    <li><a href="#">PEOPLE</a></li>
+                    <li><a href="#">VIDEO</a></li>
+                    <li><a href="#">RUNWAY</a></li>
+                    <li><a href="#"><i class="fas fa-search" id="search1"></i></a></li>
+                </ul>
+                <form action="action.php">
+                    <div id="box4_input" class="lee">
+                        <div id="text">
+                            <input type="search" placeholder="Search ..." autofocus>
+                        </div>
+                        <div id="box4_button">
+                            <a href="#"><i class="fas fa-search" id="search2"></i></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+        </header>
+
+        <section>
+            <div id="section_box1">
+                <div></div>
+                <p>2021F/W<br>샤넬컬렉션</p>
+            </div>
+            <div id="section_box2">
+                <div id="box2_img1">
+                    <div></div>
+                    <p>할리우드 셀럽들은 큰<br>물병을 들고 다닌다</p>
+                </div>
+                <div id="box2_img2">
+                    <div></div>
+                    <p>간헐적 음주 생활</p>
+                </div>
+                <div id="box2_img3">
+                    <div></div>
+                    <p>K-팝과 글로벌 플랫폼<br>비지니스의 미래는?</p>
+                </div>
+            </div>
+            <div id="section_box3">
+                <div></div>
+                <p>네가지 스타일로 보는 구찌</p>
+            </div>
+            <div id="section_box4">
+                <div id="box4_img1">
+                    <div></div>
+                    <p>그라프 트라이벌 컬레션</p>
+                </div>
+                <div id="box4_img2">
+                    <div></div>
+                    <p>진짜 파리지엔 스타일을<br>보여주는 SNS계정</p>
+                </div>
+                <div id="box4_img3">
+                    <div></div>
+                    <p>두산인프라코어 박용만<br>회장의 산문집<br>
+                        <그날까지도 인생이니까>
+                    </p>
+                </div>
+            </div>
+            <div id="section_box5">
+                <div></div>
+                <p>여전히 영화뿐인 문소리</p>
+            </div>
+            <div id="section_box6">
+                <div id="box6_img1">
+                    <div></div>
+                    <p>인생을 먼저 경험한 다섯<br>언니의 이야기</p>
+                </div>
+                <div id="box6_img2">
+                    <div></div>
+                    <p>여체 모티브의 리빙<br>아이템</p>
+                </div>
+                <div id="box6_img3">
+                    <div></div>
+                    <p>로제의 원피스 스타일링</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div id="footer_box1">
+                <img src="./img/footer_logo.png" alt="">
+            </div>
+            <div id="footer_box2">
+                <p>WWW.VOGUE.COM Ⓒ CONDÉNAST ASIA PACIFIC. INC.
+                    ALL RIGHTS RESERVED. VOGUE.COM KOREA IS OPERATED BY DOOSAN MAGAZINE.</p>
+            </div>
+            <div id="footer_box3">
+                <ul>
+                    <li><a href="#">정기구독</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">광고 및 제휴</a></li>
+                    <li><a href="#">개인정보 처리방침</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
